@@ -1,0 +1,198 @@
+const express = require('express')
+
+const router = express.Router()
+const { verifyToken, verifyHr } = require('../helpers/accounts.helpers')
+const {
+  updateDepartment,
+  addLocation,
+  addFaculty,
+  addDepartment,
+  deleteDepartment,
+  deleteLocation,
+  updateStaffSalary,
+  updateLocation,
+  addCourse,
+  deleteCourse,
+  updateCourse,
+  deleteFaculty,
+  addNewStaffMember,
+  updateStaffMember,
+  deleteStaffMember,
+  updateFaculty,
+  viewStaffMembersWithMissingHours,
+  viewStaffMembersWithMissingDays,
+  viewStaffAttendance,
+  addMissingSignIn,
+  addMissingSignOut,
+} = require('../controllers/hrMembers.controller')
+const {
+  validateUpdateDepartment,
+  validateAddLocation,
+  validateAddCourse,
+  validateDeleteCourse,
+  validateUpdateCourse,
+
+  validateAddFaculty,
+  validateAddDepartment,
+  validatedeleteDepartment,
+  validatedeleteLocation,
+  validateUpdateStaffSalary,
+  validateUpdateLocation,
+  validateDeleteFaculty,
+  validateAddNewStaffMember,
+  validateUpdateStaffMember,
+  validateDeleteStaffMember,
+  validateUpdateFaculty,
+  validateViewStaffAttendance,
+  validateViewStaffMembersWithMissingHours,
+  validateViewStaffMembersWithMissingDays,
+  validateAddMissingSignIn,
+  validateAddMissingSignOut,
+} = require('../middleware/validations/hrMembers.validations')
+
+router.post(
+  '/addLocation',
+  verifyToken,
+  verifyHr,
+  validateAddLocation,
+  addLocation
+)
+router.put(
+  '/updateDepartment',
+  verifyToken,
+  verifyHr,
+  validateUpdateDepartment,
+  updateDepartment
+)
+router.put(
+  '/updateLocation',
+  verifyToken,
+  verifyHr,
+  validateUpdateLocation,
+  updateLocation
+)
+router.put(
+  '/updateStaffSalary',
+  verifyToken,
+  verifyHr,
+  validateUpdateStaffSalary,
+  updateStaffSalary
+)
+router.delete(
+  '/deleteLocation',
+  verifyToken,
+  verifyHr,
+  validatedeleteLocation,
+  deleteLocation
+)
+router.delete(
+  '/deleteDepartment',
+  verifyToken,
+  verifyHr,
+  validatedeleteDepartment,
+  deleteDepartment
+)
+router.post(
+  '/addFaculty',
+  verifyToken,
+  verifyHr,
+  validateAddFaculty,
+  addFaculty
+)
+router.post(
+  '/addDepartment',
+  verifyToken,
+  verifyHr,
+  validateAddDepartment,
+  addDepartment
+)
+
+router.post('/addCourse', verifyToken, verifyHr, validateAddCourse, addCourse)
+router.delete(
+  '/deleteCourse',
+  verifyToken,
+  verifyHr,
+  validateDeleteCourse,
+  deleteCourse
+)
+router.put(
+  '/updateCourse',
+  verifyToken,
+  verifyHr,
+  validateUpdateCourse,
+  updateCourse
+)
+router.put(
+  '/updateFaculty',
+  verifyToken,
+  verifyHr,
+  validateUpdateFaculty,
+  updateFaculty
+)
+router.delete(
+  '/deleteFaculty',
+  verifyToken,
+  verifyHr,
+  validateDeleteFaculty,
+  deleteFaculty
+)
+router.post(
+  '/addNewStaffMember',
+  verifyToken,
+  verifyHr,
+  validateAddNewStaffMember,
+  addNewStaffMember
+)
+router.put(
+  '/updateStaffMember',
+  verifyToken,
+  verifyHr,
+  validateUpdateStaffMember,
+  updateStaffMember
+)
+
+router.delete(
+  '/deleteStaffMember',
+  verifyToken,
+  verifyHr,
+  validateDeleteStaffMember,
+  deleteStaffMember
+)
+router.get(
+  '/viewStaffMemberWithMissingHour',
+  verifyToken,
+  verifyHr,
+  validateViewStaffMembersWithMissingHours,
+  viewStaffMembersWithMissingHours
+)
+router.get(
+  '/viewStaffMemberWithMissingDays',
+  verifyToken,
+  verifyHr,
+  validateViewStaffMembersWithMissingDays,
+  viewStaffMembersWithMissingDays
+)
+
+router.post(
+  '/viewStaffAttendance',
+  verifyToken,
+  verifyHr,
+  validateViewStaffAttendance,
+  viewStaffAttendance
+)
+router.post(
+  '/AddMissingSignIn',
+  verifyToken,
+  verifyHr,
+  validateAddMissingSignIn,
+  addMissingSignIn
+)
+router.put(
+  '/AddMissingSignOut',
+  verifyToken,
+  verifyHr,
+  validateAddMissingSignOut,
+  addMissingSignOut
+)
+
+module.exports = router
