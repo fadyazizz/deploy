@@ -97,5 +97,3 @@ if (process.env.PORT) {
 } else {
   app.listen(port, () => console.log(`Server up and running on ${port}`))
 }
-
-export default server
