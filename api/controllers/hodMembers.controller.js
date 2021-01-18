@@ -68,7 +68,7 @@ const rejectRequest = async (req, res, next) => {
     }
     await hodRequestsModel.update(
       { _id: requestId },
-      { status: 'rejected', viewedBySender: false, comment: comment }
+      { status: 'rejected', viewBySender: false, comment: comment }
     )
     return res.json({ statuscode: statusCodes.success, message: 'success' })
   } catch (exception) {
